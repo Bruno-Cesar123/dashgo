@@ -7,6 +7,7 @@ import {
   Table,
   Thead,
   Th,
+  useBreakpointValue,
   Checkbox, Tbody, Tr, Td, Text
 } from "@chakra-ui/react";
 import { RiAddLine, RiPencilLine } from 'react-icons/ri';
@@ -15,6 +16,10 @@ import { Sidebar } from "../../components/Sidebar";
 import { Pagination } from "../../components/Pagination";
 
 export default function UserList() {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  })
   return (
     <Box>
       <Header />
@@ -36,18 +41,18 @@ export default function UserList() {
               Criar Novo
             </Button>
           </Flex>
-          <Table colorScheme="whiteAlpha" >
+          <Table colorScheme="whiteAlpha">
             <Thead>
-              <Th px="6" color="gray.300" width="8">
+              <Th px={["4", "4", "6"]} color="gray.300" width="8">
                 <Checkbox colorScheme="pink" />
               </Th>
               <Th>Usuários</Th>
-              <Th>Data de cadastro</Th>
-              <Th width="8"></Th>
+              { isWideVersion && <Th>Data de cadastro</Th> }
+              {/* <Th width="8"></Th> */}
             </Thead>
             <Tbody>
               <Tr>
-                <Td px="6">
+                <Td px={["4", "4", "6"]}>
                   <Checkbox colorScheme="pink" />
                 </Td>
                 <Td>
@@ -56,8 +61,8 @@ export default function UserList() {
                     <Text fontSize="sm" color="gray.300">brunocesar12386@gmail.com</Text>
                   </Box>
                 </Td>
-                <Td>29 de Setembro, 2021</Td>
-                <Td>
+                { isWideVersion && <Td>29 de Setembro, 2021</Td> }
+                {/* <Td>
                   <Button
                     as="a"
                     size="sm"
@@ -67,10 +72,10 @@ export default function UserList() {
                   >
                     Editar
                   </Button>
-                </Td>
+                </Td> */}
               </Tr>
               <Tr>
-                <Td px="6">
+                <Td px={["4", "4", "6"]}>
                   <Checkbox colorScheme="pink" />
                 </Td>
                 <Td>
@@ -79,8 +84,8 @@ export default function UserList() {
                     <Text fontSize="sm" color="gray.300">brunocesar12386@gmail.com</Text>
                   </Box>
                 </Td>
-                <Td>29 de Setembro, 2021</Td>
-                <Td>
+                { isWideVersion && <Td>29 de Setembro, 2021</Td> }
+                {/* <Td>
                   <Button
                     as="a"
                     size="sm"
@@ -90,10 +95,10 @@ export default function UserList() {
                   >
                     Editar
                   </Button>
-                </Td>
+                </Td> */}
               </Tr>
               <Tr>
-                <Td px="6">
+                <Td px={["4", "4", "6"]}>
                   <Checkbox colorScheme="pink" />
                 </Td>
                 <Td>
@@ -102,8 +107,8 @@ export default function UserList() {
                     <Text fontSize="sm" color="gray.300">brunocesar12386@gmail.com</Text>
                   </Box>
                 </Td>
-                <Td>29 de Setembro, 2021</Td>
-                <Td>
+                { isWideVersion && <Td>29 de Setembro, 2021</Td> }
+                {/* <Td>
                   <Button
                     as="a"
                     size="sm"
@@ -113,7 +118,7 @@ export default function UserList() {
                   >
                     Editar
                   </Button>
-                </Td>
+                </Td> */}
               </Tr>
             </Tbody>
           </Table>
