@@ -11,7 +11,7 @@ import {
   useBreakpointValue,
   Checkbox, Tbody, Tr, Td, Text
 } from "@chakra-ui/react";
-import { useEffect } from 'react';
+import { useState } from 'react';
 import Link from "next/link";
 import { RiAddLine } from 'react-icons/ri';
 import { useQuery } from 'react-query';
@@ -19,11 +19,12 @@ import { useQuery } from 'react-query';
 import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
 import { Pagination } from "../../components/Pagination";
+import { api } from "../../services/api";
 
 export default function UserList() {
+  const [page, setPage] = useState(1);
   const { data, isLoading, isFetching, error } = useQuery('users', async () => {
-    const response = await fetch('http://localhost:3000/api/users')
-    const data = await response.json()
+    const { data } = await api.get('/users')
 
     const users = data.users.map(user => {
       return {
@@ -116,8 +117,8 @@ export default function UserList() {
 
               <Pagination
                 totalCountOfRegisters={200}
-                currentPage={2}
-                onPageChange={() => {}}
+                currentPage={page}
+                onPageChange={setPage}
               />
             </>
           )}
